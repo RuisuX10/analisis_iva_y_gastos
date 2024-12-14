@@ -20,6 +20,9 @@ df2['Comprobante'] = df2['Comprobante'].astype(str)
 df1['Comprobante'] = df1['Comprobante'].str.replace(" ", "").str.replace("-", "")
 df2['Comprobante'] = df2['Comprobante'].str.replace(" ", "").str.replace("-", "")
 
+# Eliminar filas de df1 donde la columna 'Fecha' contenga la cadena 'Total del concepto:'
+df1 = df1[~df1['Fecha'].str.contains("Total del concepto:", na=False)]
+
 # Función para verificar si un valor es una fecha válida
 def es_fecha_valida(fecha):
     try:
